@@ -1,0 +1,80 @@
+extends layouts/main.jade
+block body
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
+        .row
+            .well
+                .row
+                    .col-xs-8.col-sm-8.col-md-9.col-lg-9
+                        a(href='/home')
+                            button.btn-lg.btn-default Home
+                        a(href='/skills')
+                            button.btn-lg.btn-default Skills
+                        a(href='/arena')
+                            button.btn-lg.btn-default Arena
+                        a(href='/rating/exp')
+                            button.btn-lg.btn-default Rating
+                    .col-xs-4.col-sm-4.col-md-3.col-lg-3
+                        a(href='/signout')
+                            button.btn-lg.btn-danger Sign Out
+        .row
+            .panel.panel-default
+                .panel-heading
+                    h1 Skills
+                .panel-body
+                    .row
+                        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                            .panel.panel-default
+                                .panel-body
+                                    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+                                        .thumbnail
+                                            img(src='/images/as1.png')
+                                    .col-xs-7.col-sm-7.col-md-7.col-lg-7
+                                        h4 Attack style 1
+                                        br
+                                        | Fast melee attack
+                            .panel.panel-default
+                                .panel-body
+                                    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+                                        .thumbnail
+                                            img(src='/images/as2.png')
+                                    .col-xs-7.col-sm-7.col-md-7.col-lg-7
+                                        h4 Attack style 2
+                                        br
+                                        | Heavy range attack
+                            .panel.panel-default
+                                .panel-body
+                                    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+                                        .thumbnail
+                                            img(src='/images/as3.png')
+                                    .col-xs-7.col-sm-7.col-md-7.col-lg-7
+                                        h4 Attack style 3
+                                        br
+                                        | Strong magic attack
+                        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                            .panel.panel-default
+                                .panel-body
+                                    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+                                        .thumbnail
+                                            img(src='/images/ds1.png')
+                                    .col-xs-7.col-sm-7.col-md-7.col-lg-7
+                                        h4 Defence style 1
+                                        br
+                                        | Block melee attack
+                            .panel.panel-default
+                                .panel-body
+                                    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+                                        .thumbnail
+                                            img(src='/images/ds2.png')
+                                    .col-xs-7.col-sm-7.col-md-7.col-lg-7
+                                        h4 Defence style 1
+                                        br
+                                        | Block range attack
+                            .panel.panel-default
+                                .panel-body
+                                    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+                                        .thumbnail
+                                            img(src='/images/ds3.png')
+                                    .col-xs-7.col-sm-7.col-md-7.col-lg-7
+                                        h4 Defence style 1
+                                        br
+                                        | Block magic attack

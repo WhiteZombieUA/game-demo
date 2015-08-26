@@ -1,0 +1,92 @@
+extends layouts/main.jade
+block body
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+        .row
+            img.img-responsive.img-circle(src="/images/logo.png")
+        .row
+            .panel.panel-default
+                .panel-heading
+                    h1 Sign up
+                .panel-body
+                    form#signupForm(action="/signup" method="post" autocomplete="on")
+                        p
+                            label.username(for="usernamesignup" data-icon="@") Username
+                            input#usernamesignup(name="usernamesignup" required="required" type="text" placeholder="mysuperusername690")
+                            span#username
+                        p
+                            label.youpasswd(for="passwordsignup") Password
+                            input#passwordsignup(name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO")
+                            span#password
+                        p
+                            label.youpasswd(for="passwordsignup_confirm") Confirm password
+                            input#passwordsignup_confirm(name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO")
+                            span#confirm_password
+                        p
+                            label Select character class
+                        .row
+                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                label WARRIOR
+                                img.img-responsive.img-thumbnail(src="/images/warrior.jpg")
+                                img(src="/images/hp.png")
+                                label HP 40
+                                //input(name="hp" type="hidden" value="40")
+                                br
+                                img(src="/images/type1.png")
+                                label DMG 15
+                                //input(name="attack1" type="hidden" value="15")
+                                br
+                                img(src="/images/type2.png")
+                                label DMG 15
+                                //input(name="attack2" type="hidden" value="15")
+                                br
+                                img(src="/images/type3.png")
+                                label DMG 15
+                                //input(name="attack3" type="hidden" value="15")
+                                br
+                                input(type="radio" name="class" value="warrior" checked="")
+
+                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                label ROGUE
+                                img.img-responsive.img-thumbnail(src="/images/rogue.jpg")
+                                img(src="/images/hp.png")
+                                label HP 40
+                                //input(name="hp" type="hidden" value="40")
+                                br
+                                img(src="/images/type1.png")
+                                label DMG 15
+                                //input(name="attack1" type="hidden" value="15")
+                                br
+                                img(src="/images/type2.png")
+                                label DMG 15
+                                //input(name="attack2" type="hidden" value="15")
+                                br
+                                img(src="/images/type3.png")
+                                label DMG 15
+                                //input(name="attack3" type="hidden" value="15")
+                                br
+                                input(type="radio" name="class" value="rogue")
+
+                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                label MAGE
+                                img.img-responsive.img-thumbnail(src="/images/mage.jpg")
+                                img(src="/images/hp.png")
+                                label HP 40
+                                //input(name="hp" type="hidden" value="40")
+                                br
+                                img(src="/images/type1.png")
+                                label DMG 15
+                                //input(name="attack1" type="hidden" value="15")
+                                br
+                                img(src="/images/type2.png")
+                                label DMG 15
+                                //input(name="attack2" type="hidden" value="15")
+                                br
+                                img(src="/images/type3.png")
+                                label DMG 15
+                                //input(name="attack3" type="hidden" value="15")
+                                br
+                                input(type="radio" name="class" value="mage")
+
+                        p
+                            input.btn-success.btn-lg(type="submit" value="Sign up")
+                        a.to_register(href="/") Already a member ?

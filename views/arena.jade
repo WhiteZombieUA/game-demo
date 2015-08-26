@@ -1,0 +1,111 @@
+extends layouts/main.jade
+block body
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
+        .row
+            .well
+                .row
+                    .col-xs-8.col-sm-8.col-md-9.col-lg-9
+                        a(href='/home')
+                            button.btn-lg.btn-default Home
+                        a(href='/skills')
+                            button.btn-lg.btn-default Skills
+                        a(href='/arena')
+                            button.btn-lg.btn-default Arena
+                        a(href='/rating/exp')
+                            button.btn-lg.btn-default Rating
+                    .col-xs-4.col-sm-4.col-md-3.col-lg-3
+                        a(href='/signout')
+                            button.btn-lg.btn-danger Sign Out
+        .row
+            .panel.panel-default
+                .panel-heading
+                    h4 Invite to fight
+                .panel-body
+                    .row
+                        table.table
+                            thead
+                                tr
+                                    th #
+                                    th Nickname
+                                    th Class
+                                    th lvl
+                                    th hp
+                                    th winrate %
+                                    th
+                            tbody
+                                each user, index in users
+                                    tr.info
+                                        td= index+1
+                                        td
+                                            b
+                                                a(href='/' + user.username) #{user.username}
+                                        td #{user.class}
+                                        td #{user.lvl}
+                                        td #{user.hp}
+                                        td #{user.winrate}%
+                                        td
+                                            button.btn-default Fight
+        .row
+            .panel.panel-default
+                .panel-heading
+                    h4 Active battles
+                .panel-body
+                    .row
+                        if active_battles.length !=0
+                            table.table
+                                thead
+                                    tr
+                                        th #
+                                        th Nickname
+                                        th Class
+                                        th lvl
+                                        th hp
+                                        th winrate %
+                                        th
+                                        th
+                                tbody
+                                    each active_battle, index in active_battles
+                                        tr.info
+                                            td= index+1
+                                            td #{active_battle.username1}
+                                            td #{active_battle.class}
+                                            td #{active_battle.lvl}
+                                            td #{active_battle.hp}
+                                            td #{active_battle.winrate}
+                                            td
+                                                button.btn-default Fight
+                                            td
+                                                button.btn-default Cancel
+
+                        else
+                            | NO ACTIVE BATTLES!
+        .row
+            .panel.panel-default
+                .panel-heading
+                    h4 Finished battles
+                .panel-body
+                    .row
+                        if unsee_logs.length !=0
+                            table.table
+                                thead
+                                    tr
+                                        th #
+                                        th Player 1
+                                        th Class
+                                        th
+                                        th Player 2
+                                        th Class
+                                        th
+                                tbody
+                                    each log, index in unsee_logs
+                                        tr.info
+                                            td= index+1
+                                            td #{log.username1}
+                                            td #{log.class1}
+                                            td vs
+                                            td #{log.username2}
+                                            td #{log.class2}
+                                            td
+                                                button.btn-default Watch
+                        else
+                            | NO BATTLES!

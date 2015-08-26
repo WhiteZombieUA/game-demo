@@ -1,0 +1,64 @@
+extends layouts/main.jade
+block body
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
+        .row
+            .well
+                .row
+                    .col-xs-8.col-sm-8.col-md-9.col-lg-9
+                        a(href='/home')
+                            button.btn-lg.btn-default Home
+                        a(href='/skills')
+                            button.btn-lg.btn-default Skills
+                        a(href='/arena')
+                            button.btn-lg.btn-default Arena
+                        a(href='/rating/exp')
+                            button.btn-lg.btn-default Rating
+                    .col-xs-4.col-sm-4.col-md-3.col-lg-3
+                        a(href='/signout')
+                            button.btn-lg.btn-danger Sign Out
+        .row
+            .panel.panel-default
+                .panel-heading
+                    .row
+                        .col-xs-8.col-sm-8.col-md-9.col-lg-9
+                            h4 Rating [#{type}]
+                        .col-xs-4.col-sm-4.col-md-3.col-lg-3
+                            .dropdown
+                                button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Sort
+                                    span.caret
+                                ul.dropdown-menu
+                                    li
+                                        a(href="/rating/exp") lvl/exp
+                                    li
+                                        a(href="/rating/battles") Num battles
+                                    li
+                                        a(href="/rating/winrate") Winrate
+                .panel-body
+                    .row
+                        if users != 0
+                            table.table.table-bordered
+                                thead
+                                    tr
+                                        th #
+                                        th Nickname
+                                        th Class
+                                        th lvl
+                                        th hp
+                                        th battles
+                                        th win
+                                        th winrate %
+                                tbody
+                                    each user, index in users
+                                        tr.info
+                                            td= index+1
+                                            td
+                                                b
+                                                    a(href='/' + user.username) #{user.username}
+                                            td #{user.class}
+                                            td #{user.lvl}
+                                            td #{user.hp}
+                                            td #{user.battles_end}
+                                            td #{user.battles_win}
+                                            td #{user.winrate}%
+                        else
+                            | ERROR!!!
