@@ -1,0 +1,161 @@
+extends layouts/main.jade
+block body
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
+        .row
+            .well
+                .row
+                    .col-xs-8.col-sm-8.col-md-9.col-lg-9
+                        a(href='/home')
+                            button.btn-lg.btn-default Home
+                        a(href='/skills')
+                            button.btn-lg.btn-default Skills
+                        a(href='/arena')
+                            button.btn-lg.btn-default Arena
+                        a(href='/rating/exp')
+                            button.btn-lg.btn-default Rating
+                    .col-xs-4.col-sm-4.col-md-3.col-lg-3
+                        a(href='/signout')
+                            button.btn-lg.btn-danger Sign Out
+        .row
+            form(action="/invite" method="post" autocomplete="on")
+                .panel.panel-default
+                    .panel-heading
+                        h4 Turn 1
+                    .panel-body
+                        .row
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4 Attack
+                                    .panel-body
+                                        .row
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as1.png")
+                                                br
+                                                input(type="radio" name="attack1" value="1" checked="")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as2.png")
+                                                br
+                                                input(type="radio" name="attack1" value="2")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as3.png")
+                                                br
+                                                input(type="radio" name="attack1" value="3")
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4 Block
+                                    .panel-body
+                                        .row
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds1.png")
+                                                br
+                                                input(type="radio" name="defence1" value="1" checked="")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds2.png")
+                                                br
+                                                input(type="radio" name="defence1" value="2")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds3.png")
+                                                br
+                                                input(type="radio" name="defence1" value="3")
+                .panel.panel-default
+                    .panel-heading
+                        h4 Turn 2
+                    .panel-body
+                        .row
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4 Attack
+                                    .panel-body
+                                        .row
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as1.png")
+                                                br
+                                                input(type="radio" name="attack2" value="1" checked="")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as2.png")
+                                                br
+                                                input(type="radio" name="attack2" value="2")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as3.png")
+                                                br
+                                                input(type="radio" name="attack2" value="3")
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4 Block
+                                    .panel-body
+                                        .row
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds1.png")
+                                                br
+                                                input(type="radio" name="defence2" value="1" checked="")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds2.png")
+                                                br
+                                                input(type="radio" name="defence2" value="2")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds3.png")
+                                                br
+                                                input(type="radio" name="defence2" value="3")
+                .panel.panel-default
+                    .panel-heading
+                        h4 Turn 3
+                    .panel-body
+                        .row
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4 Attack
+                                    .panel-body
+                                        .row
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as1.png")
+                                                br
+                                                input(type="radio" name="attack3" value="1" checked="")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as2.png")
+                                                br
+                                                input(type="radio" name="attack3" value="2")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/as3.png")
+                                                br
+                                                input(type="radio" name="attack3" value="3")
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4 Block
+                                    .panel-body
+                                        .row
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds1.png")
+                                                br
+                                                input(type="radio" name="defence3" value="1" checked="")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds2.png")
+                                                br
+                                                input(type="radio" name="defence3" value="2")
+                                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                                                img.img-responsive.img-thumbnail(src="/images/ds3.png")
+                                                br
+                                                input(type="radio" name="defence3" value="3")
+                .panel.panel-default
+                    .panel-heading
+                        .row
+                            .col-xs-4.col-xs-offset-4.col-sm-4.col-sm-offset-4.col-md-4.col-md-offset-4.col-lg-4.col-lg-offset-4
+                                label
+                                    b #{username1}
+                                    |  vs
+                                    b  #{username2}
+                                input(name="username2" type="hidden" value="#{username2}")
+                    .panel-body
+                        .row
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .col-xs-4.col-xs-offset-4.col-sm-4.col-sm-offset-4.col-md-4.col-md-offset-4.col-lg-4.col-lg-offset-4
+                                    input.btn-success.btn-lg(type="submit" value="Submit")
+                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                                .col-xs-4.col-xs-offset-4.col-sm-4.col-sm-offset-4.col-md-4.col-md-offset-4.col-lg-4.col-lg-offset-4
+                                    a(href="/arena")
+                                        .button.btn-danger.btn-lg Cancel

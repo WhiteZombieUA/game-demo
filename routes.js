@@ -136,7 +136,34 @@ module.exports = function(app){
         });
     });
 
-    app.get('/:id', function(req, res) {
+    app.post('/invite', function(req, res) {
+        battles.insert({
+            date: new Date(),
+            username1: req.user.username,
+            class: req.user.class,
+            lvl: req.user.lvl,
+            hp: req.user.hp,
+            battles_end: req.user.battles_end,
+            battles_win: req.user.battles_win,
+            attack1: req.body.attack1,
+            attack2: req.body.attack2,
+            attack3: req.body.attack3,
+            defence1: req.body.defence1,
+            defence2: req.body.defence2,
+            defence3: req.body.defence3,
+            username2: req.body.username2
+        });
+        res.redirect('/arena');
+    });
+
+    app.get('/:id/invite', function(req, res) {
+        res.render('battle', {
+            username1: req.user.username,
+            username2: req.params.id
+        });
+    });
+
+    app.get('/:id/profile', function(req, res) {
         async.parallel({
             profile_user: function (next) {
                 users.find({username: req.params.id}, function (err, users) {

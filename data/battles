@@ -1,1 +1,3 @@
 {"regdate":{"$$date":1439907931784},"username1":"qwerty12","class":"rogue","lvl":1,"hp":40,"battles_end":0,"battles_win":0,"attack1":1,"attack2":2,"attack3":3,"defence1":3,"defence2":2,"defence3":1,"username2":"WhiteZombie","_id":"4yxEgy0R3v0Njx68"}
+{"date":{"$$date":1441121697745},"username1":"WhiteZombie","class":"mage","lvl":1,"hp":40,"battles_end":2,"battles_win":1,"attack1":"1","attack2":"2","attack3":"3","defence1":"1","defence2":"2","defence3":"3","username2":"gama","_id":"BSj6HrD0BHzlcDwd"}
+{"date":{"$$date":1441121771560},"username1":"WhiteZombie","class":"mage","lvl":1,"hp":40,"battles_end":2,"battles_win":1,"attack1":"1","attack2":"1","attack3":"1","defence1":"1","defence2":"1","defence3":"1","username2":"alpha","_id":"EKddQMkpAguWwPNF"}
