@@ -8,7 +8,7 @@ var users = new Datastore({ filename: __dirname + '/data/users', autoload: true 
     endbattle = new Datastore({ filename: __dirname + '/data/archive', autoload: true });
 
 // Create a "unique" index
-users.ensureIndex({username: 'name', unique: true});
+users.ensureIndex({fieldName: 'username', unique: true});
 
 // Make the data sets available to the code
 // that uses require() on this module:

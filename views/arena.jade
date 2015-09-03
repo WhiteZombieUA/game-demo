@@ -74,9 +74,11 @@ block body
                                             td #{active_battle.hp}
                                             td #{active_battle.winrate}
                                             td
-                                                button.btn-default Fight
+                                                a(href='/battle' + active_battle._id)
+                                                    button.btn-default Fight
                                             td
-                                                button.btn-default Cancel
+                                                form(action="/cancel" + active_battle._id method = "post" autocomplete="on")
+                                                    input.btn-default(type="submit" value="Cancel")
 
                         else
                             | NO ACTIVE BATTLES!

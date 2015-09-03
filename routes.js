@@ -30,7 +30,7 @@ module.exports = function(app){
             attack1: 15,
             attack2: 15,
             attack3: 15,
-            hp: 40,
+            hp: 50,
             battles_end: 0,
             battles_win: 0
         });
@@ -63,6 +63,9 @@ module.exports = function(app){
             },
             active_battles: function (next) {
                 battles.find({username2: req.user.username}, function (err, this_user_battles) {
+                    this_user_battles.forEach(function(user){
+                        user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
+                    });
                     this_user_battles && this_user_battles.sort(function (d1, d2) {
                         return d2.date - d1.date;
                     });
@@ -154,6 +157,142 @@ module.exports = function(app){
             username2: req.body.username2
         });
         res.redirect('/arena');
+    });
+
+    app.get('/battle:id', function(req, res) {
+        battles.find({_id: req.params.id}, function(err, battle) {
+            res.render('acceptbattle', {
+                battle: battle[0]
+            });
+        });
+    });
+
+    app.post('/battle:id', function(req, res, next) {
+        battles.find({_id: req.body.battleid}, function(err, battle) {
+            if (err) return next(err);
+
+            async.parallel({
+                dropped: function (next) {
+                    battles.remove({_id: req.body.battleid}, {}, next);
+                },
+                inserted: function (next) {
+                    endbattle.insert({
+                        date: new Date(),
+                        username1: battle[0].username1,
+                        class1: battle[0].class,
+                        status1: 0,
+                        username2: battle[0].username2,
+                        class2: req.user.class,
+                        status2: 0,
+                        p1attack1: battle[0].attack1,
+                        p2defence1: req.body.defence1,
+                        p2attack1: req.body.attack1,
+                        p1defence1: battle[0].defence1,
+                        p1attack2: battle[0].attack2,
+                        p2defence2: req.body.defence2,
+                        p2attack2: req.body.attack2,
+                        p1defence2: battle[0].defence2,
+                        p1attack3: battle[0].attack3,
+                        p2defence3: req.body.defence3,
+                        p2attack3: req.body.attack3,
+                        p1defence3: battle[0].defence3
+                    }, next);
+                }
+            }, function (err, data) {
+                if (err) return next(err);
+
+                res.redirect('/log' + data.inserted._id);
+            });
+        });
+    });
+
+    app.get('/log:id', function(req, res) {
+        endbattle.find({_id: req.params.id}, function(err, log) {
+            var process = log[0],
+                winer = "",
+                turn1part1 = "",
+                turn1part2 = "",
+                turn2part1 = "",
+                turn2part2 = "",
+                turn3part1 = "",
+                turn3part2 = "",
+                p1hp, p2hp,
+                p1dmg = 0,
+                p2dmg = 0;
+
+            if (process.p1attack1 == process.p2defence1) {
+                turn1part1 = 'successful block';
+            } else {
+                turn1part1 = '-15 HP';
+                p1dmg += 15;
+            }
+            if (process.p2attack1 == process.p1defence1) {
+                turn1part2 = 'successful block';
+            } else {
+                turn1part2 = '-15 HP';
+                p2dmg += 15;
+            }
+            if (process.p1attack2 == process.p2defence2) {
+                turn2part1 = 'successful block';
+            } else {
+                turn2part1 = '-15 HP';
+                p1dmg += 15;
+            }
+            if (process.p2attack2 == process.p1defence2) {
+                turn2part2 = 'successful block';
+            } else {
+                turn2part2 = '-15 HP';
+                p2dmg += 15;
+            }
+            if (process.p1attack3 == process.p2defence3) {
+                turn3part1 = 'successful block';
+            } else {
+                turn3part1 = '-15 HP';
+                p1dmg += 15;
+            }
+            if (process.p2attack3 == process.p1defence3) {
+                turn3part2 = 'successful block';
+            } else {
+                turn3part2 = '-15 HP';
+                p2dmg += 15;
+            }
+
+            if (p1dmg > p2dmg) {
+                winer = "" + process.username1 + " WIN!!!";
+            } else if (p1dmg == p2dmg) {
+                winer = 'DRAW';
+            } else {
+                winer = "" + process.username2 + " WIN!!!";
+            }
+
+            p1hp = Math.round(100*(50-p2dmg)/50);
+            p2hp = Math.round(100*(50-p1dmg)/50);
+
+            res.render('log', {
+                log: process,
+                turn1part1: turn1part1,
+                turn1part2: turn1part2,
+                turn2part1: turn2part1,
+                turn2part2: turn2part2,
+                turn3part1: turn3part1,
+                turn3part2: turn3part2,
+                p1dmg: p1dmg,
+                p2dmg: p2dmg,
+                p1hp: p1hp,
+                p2hp: p2hp,
+                winer: winer
+            });
+        });
+    });
+
+    app.post('/result', function(req, res) {
+        //update users db
+    });
+
+    app.post('/cancel:id', function(req, res) {
+        battles.remove({_id: req.params.id}, {}, function() {
+            res.redirect(req.headers.referer);
+        });
     });
 
     app.get('/:id/invite', function(req, res) {

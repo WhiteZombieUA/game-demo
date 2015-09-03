@@ -56,6 +56,7 @@ block body
                                             td #{active_battle.username2}
                                             td #{active_battle.class2}
                                             td
-                                                button.btn-default See result
+                                                a(href="/log" + #{active_battle._id})
+                                                    button.btn-default See result
                     else
                         | NO BATTLES!
