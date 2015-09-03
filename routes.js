@@ -269,6 +269,7 @@ module.exports = function(app){
             p2hp = Math.round(100*(50-p1dmg)/50);
 
             res.render('log', {
+                this_user: req.user.username,
                 log: process,
                 turn1part1: turn1part1,
                 turn1part2: turn1part2,
@@ -285,8 +286,31 @@ module.exports = function(app){
         });
     });
 
-    app.post('/result', function(req, res) {
-        //update users db
+    app.post('/result', function(req, res, next) {
+        async.parallel({
+            updateLog: function (next) {
+                if (req.user.username == req.body.username1) {
+                    endbattle.update({_id: req.body.logid}, {$set: {status1: 1}}, {}, next);
+                } else if (req.user.username == req.body.username2) {
+                    endbattle.update({_id: req.body.logid}, {$set: {status2: 1}}, {}, next);
+                } else {
+                    next(null);
+                }
+            },
+
+            updateUser: function (next) {
+
+                if (req.body.winer == req.user.username) {
+                    users.update({username: req.user.username}, {$inc: {exp: 10, battles_end: 1, battles_win: 1}}, {}, next);
+                } else {
+                    users.update({username: req.user.username}, {$inc: {exp: 1, battles_end: 1}}, {}, next);
+                }
+            }
+        }, function (err, results) {
+            if (err) return next(err);
+
+            res.redirect('/home')
+        });
     });
 
     app.post('/cancel:id', function(req, res) {

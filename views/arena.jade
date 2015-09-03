@@ -109,6 +109,7 @@ block body
                                             td #{log.username2}
                                             td #{log.class2}
                                             td
-                                                button.btn-default Watch
+                                                a(href='/log' + log._id)
+                                                    button.btn-default Watch
                         else
                             | NO BATTLES!

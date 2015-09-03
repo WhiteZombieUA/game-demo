@@ -28,7 +28,7 @@ block body
                         .col-xs-4.col-sm-4.col-md-4.col-lg-4
                             | lvl #{profile_user.lvl}
                             br
-                            | exp #{profile_user.exp}/1000
+                            | exp #{profile_user.exp}
                             br
                             | class #{profile_user.class}
                             br
@@ -56,7 +56,7 @@ block body
                                             td #{active_battle.username2}
                                             td #{active_battle.class2}
                                             td
-                                                a(href="/log" + #{active_battle._id})
+                                                a.btn-default(href="/log#{active_battle._id}")
                                                     button.btn-default See result
                     else
                         | NO BATTLES!
