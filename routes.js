@@ -117,8 +117,8 @@ module.exports = function(app){
             },
             unsee_logs: function (next) {
                 endbattle.find({$or: [
-                    {username1: req.user.username},
-                    {username2: req.user.username}
+                    {$and: [{username1: req.user.username},{status1: 0}]},
+                    {$and: [{username2: req.user.username},{status2: 0}]}
                 ]}, function (err, this_user_end_battles) {
                     this_user_end_battles && this_user_end_battles.sort(function (d1, d2) {
                         return d2.date - d1.date;
@@ -210,6 +210,7 @@ module.exports = function(app){
         endbattle.find({_id: req.params.id}, function(err, log) {
             var process = log[0],
                 winer = "",
+                winner = "",
                 turn1part1 = "",
                 turn1part2 = "",
                 turn2part1 = "",
@@ -259,10 +260,12 @@ module.exports = function(app){
 
             if (p1dmg > p2dmg) {
                 winer = "" + process.username1 + " WIN!!!";
+                winner = process.username1;
             } else if (p1dmg == p2dmg) {
                 winer = 'DRAW';
             } else {
                 winer = "" + process.username2 + " WIN!!!";
+                winner = process.username2;
             }
 
             p1hp = Math.round(100*(50-p2dmg)/50);
@@ -281,7 +284,8 @@ module.exports = function(app){
                 p2dmg: p2dmg,
                 p1hp: p1hp,
                 p2hp: p2hp,
-                winer: winer
+                winer: winer,
+                winner: winner
             });
         });
     });
