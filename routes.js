@@ -57,12 +57,12 @@ module.exports = function(app){
     app.get('/home', function(req, res) {
         async.parallel({
             profile_user: function (next) {
-                users.find({username: req.user.username}, function (err, users) {
+                users.find({username: req.user.username}, {password: 0}, function (err, users) {
                     next(err, users ? users[0] : null);
                 })
             },
             active_battles: function (next) {
-                battles.find({username2: req.user.username}, function (err, this_user_battles) {
+                battles.find({username2: req.user.username}, {attack1: 0, attack2: 0, attack3: 0, defence1: 0, defence2: 0, defence3: 0}, function (err, this_user_battles) {
                     this_user_battles.forEach(function(user){
                         user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
                     });
@@ -97,7 +97,7 @@ module.exports = function(app){
     app.get('/arena', function(req, res) {
         async.parallel({
             users_for_battle: function (next) {
-                users.find({ $not: { username: req.user.username } }, function (err, users) {
+                users.find({ $not: { username: req.user.username }}, {password: 0}, function (err, users) {
                     users.forEach(function(user){
                         user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
                     });
@@ -105,7 +105,7 @@ module.exports = function(app){
                 })
             },
             active_battles: function (next) {
-                battles.find({username2: req.user.username}, function (err, this_user_battles) {
+                battles.find({username2: req.user.username}, {attack1: 0, attack2: 0, attack3: 0, defence1: 0, defence2: 0, defence3: 0}, function (err, this_user_battles) {
                     this_user_battles.forEach(function(user){
                         user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
                     });
@@ -160,7 +160,7 @@ module.exports = function(app){
     });
 
     app.get('/battle:id', function(req, res) {
-        battles.find({_id: req.params.id}, function(err, battle) {
+        battles.find({_id: req.params.id}, {attack1: 0, attack2: 0, attack3: 0, defence1: 0, defence2: 0, defence3: 0}, function(err, battle) {
             res.render('acceptbattle', {
                 battle: battle[0]
             });
@@ -333,7 +333,7 @@ module.exports = function(app){
     app.get('/:id/profile', function(req, res) {
         async.parallel({
             profile_user: function (next) {
-                users.find({username: req.params.id}, function (err, users) {
+                users.find({username: req.params.id}, {password: 0}, function (err, users) {
                     next(err, users ? users[0] : null);
                 })
             },
@@ -364,7 +364,7 @@ module.exports = function(app){
     });
 
     app.get('/rating/exp', function(req, res) {
-        users.find({}, function(err, all_users) {
+        users.find({}, {password: 0}, function(err, all_users) {
             all_users.forEach(function(user){
                 user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
             });
@@ -379,7 +379,7 @@ module.exports = function(app){
         });
     });
     app.get('/rating/battles', function(req, res) {
-        users.find({}, function(err, all_users) {
+        users.find({}, {password: 0}, function(err, all_users) {
             all_users.forEach(function(user){
                 user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
             });
@@ -394,7 +394,7 @@ module.exports = function(app){
         });
     });
     app.get('/rating/winrate', function(req, res) {
-        users.find({}, function(err, all_users) {
+        users.find({}, {password: 0}, function(err, all_users) {
             all_users.forEach(function(user){
                 user.winrate = user.battles_end ? Math.round(100*user.battles_win/user.battles_end) : 0;
             });
