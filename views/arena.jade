@@ -33,19 +33,21 @@ block body
                                     th winrate %
                                     th
                             tbody
-                                each user, index in users
-                                    tr.info
-                                        td= index+1
-                                        td
-                                            b
-                                                a(href='/' + user.username + '/profile') #{user.username}
-                                        td #{user.class}
-                                        td #{user.lvl}
-                                        td #{user.hp}
-                                        td #{user.winrate}%
-                                        td
-                                            a(href="/" + user.username + "/invite")
-                                                button.btn-default Fight
+                                if users.length !=0
+                                    each user, index in users
+                                        tr.info
+                                            td= index+1
+                                            td
+                                                b
+                                                    a(href='/' + user.username + '/profile') #{user.username}
+                                            td #{user.class}
+                                            td #{user.lvl}
+                                            td #{user.hp}
+                                            td #{user.winrate}%
+                                            td
+                                                a.btn.btn-default.btn-md.btn-primary(href="/" + user.username + "/invite") Fight
+                                else
+                                    | ERROR!!!
         .row
             .panel.panel-default
                 .panel-heading

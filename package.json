@@ -13,8 +13,17 @@
     "connect-flash": "^0.1.1",
     "express": "~3.4.7",
     "jade": "^1.11.0",
-    "nedb": "^1.1.2",
+    "mongodb": "^2.0.43",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WhiteZombieUA/game-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WhiteZombieUA/game-demo/issues"
+  },
+  "homepage": "https://github.com/WhiteZombieUA/game-demo"
 }

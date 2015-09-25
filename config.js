@@ -8,7 +8,14 @@ var jade = require('jade'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     DB = require('./database'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    users,
+    ObjectId = require('mongodb').ObjectID;
+
+DB(function (db) {
+    users = db.users;
+});
+
 
 // Require()-ing this module will return a function
 // that the index.js file will use to configure the
@@ -41,9 +48,8 @@ module.exports = function(app){
             usernameField: 'nickname',
             passwordField: 'password'
         }, function(username, password, done) {
-            DB.users.find({ username: username }, function (err, users) {
+            users.findOne({ username: username }, function (err, user) {
                 if (err) { return done(err); }
-                var user = users[0];
 
                 if (!user) {
                     return done(null, false, { message: 'Incorrect username.' });
@@ -57,12 +63,10 @@ module.exports = function(app){
     ));
 
     passport.serializeUser(function(user, done) {
-        done(null, user._id);
+        done(null, user._id.toString());
     });
 
     passport.deserializeUser(function(id, done) {
-        DB.users.find({_id: id}, function(err, users) {
-            done(err, users[0]);
-        });
+        users.findOne({_id: new ObjectId(id)}, done);
     });
 };
