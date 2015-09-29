@@ -3,7 +3,7 @@ var MongoClient = require('mongodb').MongoClient,
     async = require('async');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/demo-game';
+var url = process.env.MONGOLAB_URI;
 // Use connect method to connect to the Server
 
 var e = null;

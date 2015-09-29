@@ -12,6 +12,8 @@ var express = require('express');
 
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 // Configure express with the settings found in
 // our config.js file
 
@@ -25,5 +27,6 @@ require('./routes')(app);
 // This file has been called directly with 
 // `node index.js`. Start the server!
 
-app.listen(8080);
-console.log('Your application is running on http://localhost:8080');
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
