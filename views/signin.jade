@@ -1,9 +1,9 @@
 extends layouts/main.jade
 block body
     .home-forms.white-border
-        img.img-responsive.img-rounded(src="/images/logo/logo.png")
+        img.img-responsive.img-rounded.logo(src="/images/logo/logo.png")
         form(action="/login" method = "post" autocomplete="on")
-            input.home-input.white-border.font-bitter(type="text" autofocus="" required="" name="nickname" value="" placeholder="Username")
-            input.home-input.white-border.font-bitter(type="password" autofocus="" required="" name="password" value="" placeholder="Password")
+            input.global-inputs.white-border.font-bitter(type="text" autofocus="" required="" name="nickname" value="" placeholder="Username")
+            input.global-inputs.white-border.font-bitter(type="password" autofocus="" required="" name="password" value="" placeholder="Password")
             a(href="/signup") Need an account? Register now!
             input.submit-btn.white-border.font-bitter(type="submit" value="Sign in")

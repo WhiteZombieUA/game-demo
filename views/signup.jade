@@ -1,50 +1,31 @@
 extends layouts/main.jade
 block body
-    .col-xs-12.col-sm-12.col-md-3.col-md-offset-4.col-lg-3.col-lg-offset-4
-        .row
-            img.img-responsive.img-circle(src="/images/logo/logo.png")
-        .row
-            .panel.panel-default
-                .panel-heading
-                    h1 Sign up
-                .panel-body
-                    form#signupForm(action="/signup" method="post" autocomplete="on")
-                        .row
-                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-                                label.username(for="usernamesignup" data-icon="@") Username
-                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-                                input#usernamesignup(name="usernamesignup" required="required" type="text" placeholder="mysuperusername690")
-                            span#username
-                        .row
-                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-                                label.youpasswd(for="passwordsignup") Password
-                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-                                input#passwordsignup(name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO")
-                            span#password
-                        .row
-                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-                                label.youpasswd(for="passwordsignup_confirm") Confirm password
-                            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-                                input#passwordsignup_confirm(name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO")
-                            span#confirm_password
-                        p
-                            label Select character class
-                        .row
-                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
-                                label WARRIOR
-                                    img.img-responsive.img-thumbnail(src="/images/warrior.jpg")
-                                    input(type="radio" name="class" value="warrior" checked="")
+    .home-forms.white-border
+        img.img-responsive.img-rounded.logo(src="/images/logo/logo.png")
+        form#signupForm(action="/signup" method="post" autocomplete="on")
+            input.global-inputs.white-border.font-bitter#usernamesignup(name="usernamesignup" required="required" type="text" placeholder="Username")
+            span#username
 
-                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
-                                label ROGUE
-                                    img.img-responsive.img-thumbnail(src="/images/rogue.jpg")
-                                    input(type="radio" name="class" value="rogue")
+            input.global-inputs.white-border.font-bitter#passwordsignup(name="passwordsignup" required="required" type="password" placeholder="Password")
+            span#password
 
-                            .col-xs-4.col-sm-4.col-md-4.col-lg-4
-                                label MAGE
-                                    img.img-responsive.img-thumbnail(src="/images/mage.jpg")
-                                    input(type="radio" name="class" value="mage")
+            input.global-inputs.white-border.font-bitter#passwordsignup_confirm(name="passwordsignup_confirm" required="required" type="password" placeholder="Confirm password")
+            span#confirm_password
 
-                        p
-                            input.btn-success.btn-lg(type="submit" value="Sign up")
-                        a.to_register(href="/") Already registered?
+            .game-classes
+                label
+                    input(type="radio" class="option-input radio noselect" name="class" value="warrior" checked="")
+                    img.img-responsive.img-thumbnail(src="/images/classes/warrior.png")
+                    span.font-bitter WARRIOR
+                label
+                    input(type="radio" class="option-input radio noselect" name="class" value="rogue")
+                    img.img-responsive.img-thumbnail(src="/images/classes/rogue.png")
+                    span.font-bitter ROGUE
+                label
+                    input(type="radio" class="option-input radio noselect" name="class" value="mage")
+                    img.img-responsive.img-thumbnail(src="/images/classes/mage.png")
+                    span.font-bitter MAGE
+
+            a.to_register(href="/") Already registered?
+
+            input.submit-btn.white-border.font-bitter(type="submit" value="Sign up")

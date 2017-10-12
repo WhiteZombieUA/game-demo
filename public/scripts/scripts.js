@@ -12,23 +12,72 @@ $(document).ready(function(){
                 triger += 1;
             }
             if (username.length < 3) {
-                str += '<p>USERNAME is too short. Input USERNAME 3 or more chars.</p>';
+                str += '<p>USERNAME is too short (3 or more chars)</p>';
                 triger += 1;
             }
             if (username.length > 11) {
-                str += '<p>USERNAME is too long. Input USERNAME 11 or less chars.</p>';
+                str += '<p>USERNAME is too long (11 or less chars)</p>';
                 triger += 1;
             }
             str += '</div>';
             if (triger > 0) {
+                $('#usernamesignup').addClass('red-border');
                 $($.parseHTML(str)).appendTo($('span#username').empty());
             } else {
+                $('#usernamesignup').removeClass('red-border');
                 $('span#username').empty();
             }
         });
         return false;
     });
 });
+
+$(document).ready(function(){
+    $('#passwordsignup').blur(function(){
+        var str = '<div class="alert alert-danger" role="alert">',
+            pwrd = $('#passwordsignup').val(),
+            triger = 0;
+        if (pwrd.length < 6) {
+            str += '<p>Password must be minimum 6 characters</p>';
+            triger += 1;
+        }
+        str += '</div>';
+        if (triger > 0) {
+            $('#passwordsignup').addClass('red-border');
+            $($.parseHTML(str)).appendTo($('span#password').empty());
+        } else {
+            $('#passwordsignup').removeClass('red-border');
+            $('span#password').empty();
+        }
+    });
+});
+
+$(document).ready(function(){
+    $('#passwordsignup_confirm').blur(function(){
+        var str = '<div class="alert alert-danger" role="alert">',
+            $pwrd = $('#passwordsignup'),
+            pwrd = $pwrd.val(),
+            $cfpwrd = $('#passwordsignup_confirm'),
+            cfpwrd = $cfpwrd.val(),
+            triger = 0;
+        if (pwrd != cfpwrd) {
+            str += '<p>PASSWORDs don&#39;t match</p>';
+            triger += 1;
+        }
+        str += '</div>';
+        if (triger > 0) {
+            $cfpwrd.addClass('red-border');
+            $pwrd.addClass('red-border');
+            $($.parseHTML(str)).appendTo($('span#confirm_password').empty());
+        } else {
+            $cfpwrd.removeClass('red-border');
+            $pwrd.removeClass('red-border');
+            $('span#confirm_password').empty();
+        }
+    });
+});
+
+/*
 
 $(document).ready(function(){
     $('#emailsignup').blur(function(event) {
@@ -62,57 +111,4 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-    $('#passwordsignup_confirm').blur(function(){
-        var str = '<div class="alert alert-danger" role="alert">',
-            pwrd = $('#passwordsignup').val(),
-            cfpwrd = $('#passwordsignup_confirm').val(),
-            triger = 0;
-        if (pwrd != cfpwrd) {
-            str += '<p>Password and Confirm Password must match</p>';
-            triger += 1;
-        }
-        str += '</div>';
-        if (triger > 0) {
-            $($.parseHTML(str)).appendTo($('span#confirm_password').empty());
-        } else {
-            $('span#confirm_password').empty();
-        }
-    });
-});
-
-$(document).ready(function(){
-    $('#passwordsignup').blur(function(){
-        var str = '<div class="alert alert-danger" role="alert">',
-            pwrd = $('#passwordsignup').val(),
-            triger = 0;
-        if (pwrd.length < 6) {
-            str += '<p>Password must be minimum 6 characters</p>';
-            triger += 1;
-        }
-        str += '</div>';
-        if (triger > 0) {
-            $($.parseHTML(str)).appendTo($('span#password').empty());
-        } else {
-            $('span#password').empty();
-        }
-    });
-});
-
-$(document).ready(function(){
-    $('#fullnamesignup').blur(function(){
-        var str = '<div class="alert alert-danger" role="alert">',
-            fullname = $('#fullnamesignup').val(),
-            triger = 0;
-        if (fullname.length < 2) {
-            str += '<p>Write your name and surname</p>';
-            triger += 1;
-        }
-        str += '</div>';
-        if (triger > 0) {
-            $($.parseHTML(str)).appendTo($('span#fullname').empty());
-        } else {
-            $('span#fullname').empty();
-        }
-    });
-});
+*/

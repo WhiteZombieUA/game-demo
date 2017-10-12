@@ -1,4 +1,12 @@
 /* Global */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -22,27 +30,7 @@ input::placeholder {
     font-family: 'Bitter', serif;
     color: #ffffff;
 }
-
-.white-border {
-    border: solid 3px #ffffff;
-}
-.font-bitter {
-    font-family: 'Bitter', serif;
-}
-/* Local */
-
-.home-forms {
-    width: 320px;
-    height: 518px;
-    margin: 50px auto;
-}
-.home-forms img {
-    margin-top: 25px;
-}
-.home-forms form {
-    margin: 30px 5px;
-}
-.home-input {
+.global-inputs {
     margin: 10px 0;
     padding: 0 0 0 20px;
     width: 100%;
@@ -50,13 +38,37 @@ input::placeholder {
     background-color: #000000;
     color: #ffffff;
 }
+.white-border {
+    border: solid 3px #ffffff;
+}
+.red-border {
+    border: solid 3px #ff6666;
+}
+.font-bitter {
+    font-family: 'Bitter', serif;
+}
 
+
+
+/* Local */
+
+.home-forms {
+    width: 320px;
+    min-height: 518px;
+    height: auto;
+    margin: 50px auto 0;
+}
+.home-forms .logo {
+    margin-top: 25px;
+}
+.home-forms form {
+    margin: 30px 5px;
+}
 
 .home-forms a {
-    color: #ffffff;
     font-family: cursive, sans-serif;
     font-size: 20px;
-    line-height: 120px;
+    line-height: 104px;
 }
 .home-forms .submit-btn {
     width: 100%;
@@ -71,4 +83,89 @@ input::placeholder {
     background-color: #99ffbb;
     color: #000000;
     font-size: 40px;
+}
+
+
+
+    /* radio buttons */
+
+.game-classes label {
+    display: block;
+    line-height: 64px;
+    color: #fff;
+}
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 13px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    transition: all 0.15s ease-out 0s;
+    background: #000000;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    z-index: 1000;
+}
+.option-input:checked::before {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    content: "\002714";
+    display: inline-block;
+    font-size: 50px;
+    color: #99ffbb;
+    text-align: center;
+    line-height: 30px;
+}
+
+
+.option-input:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: #99ffbb;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+@keyframes click-wave {
+    0% {
+        height: 40px;
+        width: 40px;
+        opacity: 0.35;
+        position: relative;
+    }
+    100% {
+        height: 200px;
+        width: 200px;
+        margin-left: -80px;
+        margin-top: -80px;
+        opacity: 0;
+    }
+}
+
+
+
+.game-classes label {
+    border: 1px solid #ffffff;
+    padding: 10px;
+}
+.game-classes img {
+    width: 64px;
+    height: 64px;
+    margin: 0 20px;
+}
+.game-classes {
+    font-size: 20px;
 }
