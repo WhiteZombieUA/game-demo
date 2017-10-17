@@ -25,6 +25,14 @@ module.exports = function(app){
     });
 
     app.post('/signup', function(req, res) {
+        var hp = 1;
+        switch (req.body.class) {
+            case "warrior" : hp = 120; break;
+            case "rogue" : hp = 100; break;
+            case "mage" : hp = 80; break;
+            default : hp = 999;
+        }
+
         users.insert( {
             regdate: new Date(),
             username: req.body.usernamesignup,
@@ -35,7 +43,7 @@ module.exports = function(app){
             attack1: 15,
             attack2: 15,
             attack3: 15,
-            hp: 50,
+            hp: hp,
             battles_end: 0,
             battles_win: 0
         }, function (err) {

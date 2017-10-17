@@ -1,3 +1,4 @@
+/* JQuery sign in form validate */
 $(document).ready(function(){
     $('#usernamesignup').blur(function(event) {
         var $this = $(this),
@@ -78,7 +79,6 @@ $(document).ready(function(){
 });
 
 /*
-
 $(document).ready(function(){
     $('#emailsignup').blur(function(event) {
         var $this = $(this),
@@ -110,5 +110,18 @@ $(document).ready(function(){
         return false;
     });
 });
-
 */
+
+
+$(document).ready(function(){
+    $('#r11').on('click', function(){
+        $(this).parent().find('a').trigger('click')
+    });
+
+    $('#r12').on('click', function(){
+        $(this).parent().find('a').trigger('click')
+    });
+    $('#r13').on('click', function(){
+        $(this).parent().find('a').trigger('click')
+    });
+});

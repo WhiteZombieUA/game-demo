@@ -12,19 +12,65 @@ block body
             input.global-inputs.white-border.font-bitter#passwordsignup_confirm(name="passwordsignup_confirm" required="required" type="password" placeholder="Confirm password")
             span#confirm_password
 
-            .game-classes
-                label
-                    input(type="radio" class="option-input radio noselect" name="class" value="warrior" checked="")
-                    img.img-responsive.img-thumbnail(src="/images/classes/warrior.png")
-                    span.font-bitter WARRIOR
-                label
-                    input(type="radio" class="option-input radio noselect" name="class" value="rogue")
-                    img.img-responsive.img-thumbnail(src="/images/classes/rogue.png")
-                    span.font-bitter ROGUE
-                label
-                    input(type="radio" class="option-input radio noselect" name="class" value="mage")
-                    img.img-responsive.img-thumbnail(src="/images/classes/mage.png")
-                    span.font-bitter MAGE
+            #game-classes
+                #accordion.panel-group
+                    .panel
+                        .panel-heading
+                            label.panel-title(for='r11')
+                                input(type='radio' id='r11' class="option-input radio" name='class' value="warrior" checked="" required)
+                                img.img-responsive.img-thumbnail(src="/images/classes/warrior.png")
+                                span.font-bitter WARRIOR
+                                a(data-toggle="collapse" data-parent="#accordion" href="#collapseOne")
+                        #collapseOne.panel-collapse.collapse.in
+                            .panel-body
+                                .row
+                                    .col-sm-4
+                                        img.img-responsive.img-thumbnail(src="/images/params/str.png")
+                                        .font-bitter.text-center STR
+                                    .col-sm-4
+                                        img.img-responsive.img-thumbnail(src="/images/params/hp.png")
+                                        .font-bitter.text-center 120
+                                    .col-sm-4.text-center
+                                        img.img-responsive.img-thumbnail(src="/images/params/sword.png")
+                                        .font-bitter.text-center Sword
+                    .panel
+                        .panel-heading
+                            label.panel-title(for='r12')
+                                input(type='radio' id='r12' class="option-input radio" name='class' value="rogue" required)
+                                img.img-responsive.img-thumbnail(src="/images/classes/rogue.png")
+                                span.font-bitter ROGUE
+                                a(data-toggle="collapse" data-parent="#accordion" href="#collapseTwo")
+                        #collapseTwo.panel-collapse.collapse
+                            .panel-body
+                                .row
+                                    .col-sm-4
+                                        img.img-responsive.img-thumbnail(src="/images/params/agi.png")
+                                        .font-bitter.text-center AGI
+                                    .col-sm-4
+                                        img.img-responsive.img-thumbnail(src="/images/params/hp.png")
+                                        .font-bitter.text-center 100
+                                    .col-sm-4.text-center
+                                        img.img-responsive.img-thumbnail(src="/images/params/bow.png")
+                                        .font-bitter.text-center Bow
+                    .panel
+                        .panel-heading
+                            label.panel-title(for='r13')
+                                input(type='radio' id='r13' class="option-input radio" name='class' value="mage" required)
+                                img.img-responsive.img-thumbnail(src="/images/classes/mage.png")
+                                span.font-bitter MAGE
+                                a(data-toggle="collapse" data-parent="#accordion" href="#collapseThird")
+                        #collapseThird.panel-collapse.collapse
+                            .panel-body
+                                .row
+                                    .col-sm-4
+                                        img.img-responsive.img-thumbnail(src="/images/params/int.png")
+                                        .font-bitter.text-center INT
+                                    .col-sm-4
+                                        img.img-responsive.img-thumbnail(src="/images/params/hp.png")
+                                        .font-bitter.text-center 80
+                                    .col-sm-4.text-center
+                                        img.img-responsive.img-thumbnail(src="/images/params/staff.png")
+                                        .font-bitter.text-center Staff
 
             a.to_register(href="/") Already registered?
 
